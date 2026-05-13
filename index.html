@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brackenbury Bookclub — Reading List 2005–2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --ink: #0e1b34;             /* dark navy, matches the site's titles */
+    --ink-soft: #2a3552;
+    --ink-mute: #6c7691;
+    --rule: #d9dde6;             /* light blue-grey rule */
+    --rule-soft: #ecedf1;
+    --accent: #0e1b34;           /* deep navy — primary accent, matches site */
+    --accent-warm: #8a6a3a;      /* understated muted gold for a hint of warmth */
+    --hover: #f6f7f9;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 16px;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* MASTHEAD */
+  .masthead {
+    padding: 72px 32px 28px;
+    text-align: center;
+    background: var(--bg);
+  }
+
+  .navline {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 32px;
+  }
+
+  h1.title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 400;
+    letter-spacing: -0.005em;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .dateline {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--ink-mute);
+    margin-bottom: 28px;
+    font-weight: 400;
+  }
+
+  .title-rule {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto 40px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .lede {
+    max-width: 640px;
+    margin: 0 auto 36px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 1.1rem;
+    line-height: 1.65;
+    font-weight: 400;
+  }
+
+  /* STATS STRIP */
+  .stats-strip {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 24px 0 8px;
+  }
+
+  .stat {
+    padding: 4px 32px;
+    text-align: center;
+    min-width: 130px;
+    position: relative;
+  }
+  .stat + .stat::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 18%;
+    bottom: 18%;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.9rem;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 8px;
+    font-weight: 400;
+  }
+  .stat-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-mute);
+  }
+
+  /* TABS */
+  .tab-bar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--ink);
+    margin-top: 40px;
+  }
+
+  .tab-bar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    padding: 0 32px;
+  }
+
+  .tab {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.55);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 22px 36px;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s, background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .tab:hover { color: #ffffff; background: rgba(255,255,255,0.06); }
+  .tab.active {
+    color: #ffffff;
+    background: rgba(255,255,255,0.08);
+  }
+  .tab.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent-warm);
+  }
+  .tab-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.5;
+  }
+  .tab.active .tab-dot { background: var(--accent-warm); opacity: 1; }
+
+  /* MAIN */
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 56px 32px 80px;
+  }
+
+  .panel { display: none; }
+  .panel.active { display: block; animation: fadeIn 0.3s ease; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* SECTION HEADERS — matching the site's centred serif-and-rule style */
+  .section {
+    margin-bottom: 72px;
+  }
+  .section-head {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+  .section-head h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.85rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 14px;
+    letter-spacing: -0.005em;
+  }
+  .section-head .meta {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--ink-mute);
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+  }
+  .section-head .rule {
+    width: 100%;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* YEAR TIMELINE */
+  .timeline {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    height: 160px;
+    padding: 16px 0 40px;
+    overflow-x: auto;
+    position: relative;
+  }
+  .tl-year {
+    flex: 1;
+    min-width: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+  }
+  .tl-bar {
+    width: 100%;
+    background: var(--ink);
+    transition: background 0.2s;
+    min-height: 4px;
+  }
+  .tl-year:hover .tl-bar { background: var(--accent-warm); }
+  .tl-year.selected .tl-bar { background: var(--accent-warm); }
+  .tl-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 10px;
+    color: var(--ink-mute);
+    margin-top: 8px;
+    transform: rotate(-45deg);
+    transform-origin: top right;
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+  }
+  .tl-count {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    color: var(--ink);
+    position: absolute;
+    top: -18px;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .tl-year:hover .tl-count, .tl-year.selected .tl-count { opacity: 1; }
+
+  /* BARS CHART */
+  .bars {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .bar-row {
+    display: grid;
+    grid-template-columns: 140px 1fr 70px;
+    align-items: center;
+    gap: 16px;
+    font-size: 0.95rem;
+  }
+  .bar-label {
+    color: var(--ink);
+    text-align: right;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+  }
+  .bar-track {
+    background: var(--rule-soft);
+    height: 10px;
+    overflow: hidden;
+    position: relative;
+  }
+  .bar-fill {
+    height: 100%;
+    background: var(--ink);
+    transition: width 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .bar-val {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.82rem;
+    color: var(--ink-mute);
+  }
+
+  /* AUTHOR GRID */
+  .author-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 0;
+    border-top: 1px solid var(--rule);
+    border-left: 1px solid var(--rule);
+  }
+  .author-card {
+    padding: 16px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .author-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    color: var(--ink);
+    font-size: 1rem;
+  }
+  .author-count {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .author-card.repeat-3 .author-count { color: var(--accent-warm); }
+
+  /* DONUTS */
+  .donuts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 32px;
+  }
+  .donut-card {
+    text-align: center;
+  }
+  .donut-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 18px;
+    color: var(--ink);
+    font-weight: 400;
+    font-style: italic;
+  }
+  .donut-wrap {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+  }
+  .donut-center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .donut-center .big {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.9rem;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .donut-center .small {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-top: 6px;
+  }
+  .donut-legend {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    font-family: 'Source Sans 3', sans-serif;
+  }
+  .donut-legend-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+  .legend-sw {
+    width: 10px; height: 10px;
+  }
+
+  /* BROWSE TAB */
+  .filter-bar {
+    padding: 0 0 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    gap: 12px;
+  }
+  .filter-bar input, .filter-bar select {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13px;
+    border: 1px solid var(--rule);
+    background: var(--bg);
+    color: var(--ink);
+    padding: 9px 12px;
+  }
+  .filter-bar input:focus, .filter-bar select:focus {
+    outline: none;
+    border-color: var(--ink);
+  }
+
+  .results-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 14px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .clear-filters {
+    background: none;
+    border: none;
+    color: var(--ink);
+    cursor: pointer;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-family: 'Source Sans 3', sans-serif;
+    text-decoration: underline;
+  }
+
+  /* TABLE */
+  table.books {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg);
+  }
+  table.books th {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    text-align: left;
+    padding: 14px 12px;
+    border-bottom: 1px solid var(--ink);
+    background: var(--bg);
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+  }
+  table.books th:hover { color: var(--ink); }
+  table.books th .sort-ind {
+    display: inline-block;
+    margin-left: 4px;
+    color: var(--ink);
+    opacity: 0;
+    font-size: 9px;
+  }
+  table.books th.sort-active .sort-ind { opacity: 1; }
+
+  table.books td {
+    padding: 14px 12px;
+    border-bottom: 1px solid var(--rule-soft);
+    font-size: 0.95rem;
+    vertical-align: top;
+  }
+  table.books tr:last-child td { border-bottom: none; }
+  table.books tr:hover td { background: var(--hover); }
+
+  td.year {
+    font-family: 'Playfair Display', serif;
+    color: var(--ink);
+    font-size: 1rem;
+    width: 56px;
+  }
+  td.title {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--ink);
+    font-size: 1.02rem;
+  }
+  td.author { color: var(--ink-soft); }
+  td.nat { color: var(--ink-mute); font-size: 0.9rem; }
+  td.pages { color: var(--ink-mute); font-size: 0.9rem; }
+
+  .pill {
+    display: inline-block;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid var(--rule);
+    color: var(--ink-mute);
+  }
+  .pill.nf { border-color: var(--accent-warm); color: var(--accent-warm); }
+
+  /* PAGINATION */
+  .pager {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 28px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 12px;
+  }
+  .pager button {
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    color: var(--ink);
+    padding: 8px 14px;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: inherit;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .pager button:hover:not(:disabled) { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .pager button:disabled { opacity: 0.3; cursor: not-allowed; }
+  .pager .pi { color: var(--ink-mute); letter-spacing: 0.08em; }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 40px 32px;
+    border-top: 1px solid var(--rule);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--ink-mute);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+  footer a { color: var(--ink); }
+  footer .memorial {
+    display: block;
+    margin-top: 10px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-style: normal;
+    font-size: 0.85rem;
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    main { padding: 36px 18px 60px; }
+    .masthead { padding: 48px 18px 22px; }
+    .filter-bar { grid-template-columns: 1fr 1fr; }
+    .bar-row { grid-template-columns: 100px 1fr 56px; font-size: 0.85rem; gap: 12px; }
+    table.books th, table.books td { padding: 10px 8px; font-size: 0.85rem; }
+    .tab { padding: 14px 16px; font-size: 11px; letter-spacing: 0.16em; }
+    .stats-strip { padding: 14px 0; }
+    .stat { padding: 4px 16px; min-width: 100px; }
+    .stat-num { font-size: 1.4rem; }
+    td.nat, td.pages { display: none; }
+    table.books th.col-nat, table.books th.col-pages { display: none; }
+    .section { margin-bottom: 56px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="navline">Reading List · 2005–2026</div>
+  <h1 class="title">Brackenbury Bookclub: By Numbers</h1>
+  <p class="lede">
+    Twenty-two years, two hundred and fourteen books, seventy thousand pages.
+  </p>
+  <div class="stats-strip">
+    <div class="stat"><div class="stat-num">214</div><div class="stat-label">Books</div></div>
+    <div class="stat"><div class="stat-num">22</div><div class="stat-label">Years</div></div>
+    <div class="stat"><div class="stat-num">70,947</div><div class="stat-label">Pages</div></div>
+    <div class="stat"><div class="stat-num">199</div><div class="stat-label">Authors</div></div>
+    <div class="stat"><div class="stat-num">26</div><div class="stat-label">Nationalities</div></div>
+  </div>
+</header>
+
+<nav class="tab-bar">
+  <div class="tab-bar-inner">
+    <button class="tab active" data-tab="charts"><span class="tab-dot"></span>Charts &amp; Stats</button>
+    <button class="tab" data-tab="browse"><span class="tab-dot"></span>Browse Books</button>
+  </div>
+</nav>
+
+<main>
+  <!-- CHARTS PANEL -->
+  <div class="panel active" id="panel-charts">
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Reading across the years</h2>
+        <div class="meta" id="year-meta"></div>
+        <div class="rule"></div>
+      </div>
+      <div class="timeline" id="timeline"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Where the writers come from</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="bars" id="nat-bars"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Authors read more than once</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="author-grid" id="author-grid"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>The shape of the shelf</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="donuts">
+        <div class="donut-card">
+          <h3>Gender of author</h3>
+          <div class="donut-wrap" id="donut-gender"></div>
+          <div class="donut-legend" id="legend-gender"></div>
+        </div>
+        <div class="donut-card">
+          <h3>Fiction vs nonfiction</h3>
+          <div class="donut-wrap" id="donut-fic"></div>
+          <div class="donut-legend" id="legend-fic"></div>
+        </div>
+        <div class="donut-card">
+          <h3>Originally in</h3>
+          <div class="donut-wrap" id="donut-lang"></div>
+          <div class="donut-legend" id="legend-lang"></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- BROWSE PANEL -->
+  <div class="panel" id="panel-browse">
+    <section class="section">
+      <div class="section-head">
+        <h2>All 214 books</h2>
+        <div class="meta">Click a year on the timeline or filter to narrow</div>
+        <div class="rule"></div>
+      </div>
+
+      <div class="timeline" id="timeline2"></div>
+
+      <div class="filter-bar">
+        <input type="text" id="f-search" placeholder="Search title or author…">
+        <select id="f-gender">
+          <option value="">All authors</option>
+          <option value="M">Men</option>
+          <option value="F">Women</option>
+        </select>
+        <select id="f-fic">
+          <option value="">All forms</option>
+          <option value="Fiction">Fiction</option>
+          <option value="Nonfiction">Nonfiction</option>
+        </select>
+        <select id="f-lang">
+          <option value="">All languages</option>
+        </select>
+        <select id="f-nat">
+          <option value="">All origins</option>
+        </select>
+      </div>
+
+      <div class="results-meta">
+        <span id="result-count"></span>
+        <button class="clear-filters" id="clear">Clear filters</button>
+      </div>
+
+      <table class="books" id="books-table">
+        <thead>
+          <tr>
+            <th data-sort="year" class="sort-active">Year<span class="sort-ind">▼</span></th>
+            <th data-sort="title">Title<span class="sort-ind">▼</span></th>
+            <th data-sort="author">Author<span class="sort-ind">▼</span></th>
+            <th data-sort="primary" class="col-nat">Origin<span class="sort-ind">▼</span></th>
+            <th data-sort="pages" class="col-pages">Pages<span class="sort-ind">▼</span></th>
+            <th data-sort="fic">Form<span class="sort-ind">▼</span></th>
+          </tr>
+        </thead>
+        <tbody id="books-body"></tbody>
+      </table>
+
+      <div class="pager" id="pager"></div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  A bookclub in Hammersmith, west London · founded 2005<br>
+  <span class="memorial">In memory of Zeb, founder, who is irreplaceable.</span>
+</footer>
+
+<script>
+const BOOKS = [{"year": 2026, "title": "Stone Yard Devotional", "author": "Charlotte Wood", "nationality": "Australian", "primary": "Australian", "gender": "F", "pages": 320, "pub_year": 2023, "fic": "Fiction", "lang": "English"}, {"year": 2026, "title": "Fates and Furies", "author": "Lauren Groff", "nationality": "American", "primary": "American", "gender": "F", "pages": 391, "pub_year": 2015, "fic": "Fiction", "lang": "English"}, {"year": 2026, "title": "Monkey Grip", "author": "Helen Garner", "nationality": "Australian", "primary": "Australian", "gender": "F", "pages": 256, "pub_year": 1977, "fic": "Fiction", "lang": "English"}, {"year": 2026, "title": "The Loneliness of Sonia and Sunny", "author": "Kiran Desai", "nationality": "Indian", "primary": "Indian", "gender": "F", "pages": 688, "pub_year": 2025, "fic": "Fiction", "lang": "English"}, {"year": 2026, "title": "Audition", "author": "Katie Kitamura", "nationality": "American", "primary": "American", "gender": "F", "pages": 208, "pub_year": 2025, "fic": "Fiction", "lang": "English"}, {"year": 2026, "title": "The Land in Winter", "author": "Andrew Miller", "nationality": "British", "primary": "British", "gender": "M", "pages": 416, "pub_year": 2024, "fic": "Fiction", "lang": "English"}, {"year": 2025, "title": "Dream Count", "author": "Chimamanda Ngozi Adichie", "nationality": "Nigerian", "primary": "Nigerian", "gender": "F", "pages": 416, "pub_year": 2025, "fic": "Fiction", "lang": "English"}, {"year": 2025, "title": "Priestdaddy", "author": "Patricia Lockwood", "nationality": "American", "primary": "American", "gender": "F", "pages": 352, "pub_year": 2017, "fic": "Nonfiction", "lang": "English"}, {"year": 2025, "title": "The Rest of Our Lives", "author": "Ben Markovits", "nationality": "American", "primary": "American", "gender": "M", "pages": 320, "pub_year": 2025, "fic": "Fiction", "lang": "English"}, {"year": 2025, "title": "Clear", "author": "Carys Davies", "nationality": "British", "primary": "British", "gender": "F", "pages": 176, "pub_year": 2024, "fic": "Fiction", "lang": "English"}, {"year": 2025, "title": "Thunderclap", "author": "Laura Cumming", "nationality": "British", "primary": "British", "gender": "F", "pages": 320, "pub_year": 2023, "fic": "Nonfiction", "lang": "English"}, {"year": 2025, "title": "The Years", "author": "Annie Ernaux", "nationality": "French", "primary": "French", "gender": "F", "pages": 232, "pub_year": 2008, "fic": "Nonfiction", "lang": "French"}, {"year": 2025, "title": "All Fours", "author": "Miranda July", "nationality": "American", "primary": "American", "gender": "F", "pages": 336, "pub_year": 2024, "fic": "Fiction", "lang": "English"}, {"year": 2025, "title": "You Dreamed of Empires", "author": "Álvaro Enrigue", "nationality": "Mexican", "primary": "Mexican", "gender": "M", "pages": 224, "pub_year": 2022, "fic": "Fiction", "lang": "Spanish"}, {"year": 2025, "title": "James", "author": "Percival Everett", "nationality": "American", "primary": "American", "gender": "M", "pages": 320, "pub_year": 2024, "fic": "Fiction", "lang": "English"}, {"year": 2025, "title": "Kairos", "author": "Jenny Erpenbeck", "nationality": "German", "primary": "German", "gender": "F", "pages": 304, "pub_year": 2021, "fic": "Fiction", "lang": "German"}, {"year": 2024, "title": "Enter Ghost", "author": "Isabella Hammad", "nationality": "British-Palestinian", "primary": "British", "gender": "F", "pages": 320, "pub_year": 2023, "fic": "Fiction", "lang": "English"}, {"year": 2024, "title": "The Bloody Chamber and Other Stories", "author": "Angela Carter", "nationality": "British", "primary": "British", "gender": "F", "pages": 160, "pub_year": 1979, "fic": "Fiction", "lang": "English"}, {"year": 2024, "title": "Soldier Sailor", "author": "Claire Kilroy", "nationality": "Irish", "primary": "Irish", "gender": "F", "pages": 240, "pub_year": 2023, "fic": "Fiction", "lang": "English"}, {"year": 2024, "title": "The Inseparables", "author": "Simone de Beauvoir", "nationality": "French", "primary": "French", "gender": "F", "pages": 160, "pub_year": 2020, "fic": "Fiction", "lang": "French"}, {"year": 2024, "title": "The Bee Sting", "author": "Paul Murray", "nationality": "Irish", "primary": "Irish", "gender": "M", "pages": 656, "pub_year": 2023, "fic": "Fiction", "lang": "English"}, {"year": 2024, "title": "Western Lane", "author": "Chetna Maroo", "nationality": "British", "primary": "British", "gender": "F", "pages": 176, "pub_year": 2023, "fic": "Fiction", "lang": "English"}, {"year": 2024, "title": "Changing My Mind: Occasional Essays", "author": "Zadie Smith", "nationality": "British", "primary": "British", "gender": "F", "pages": 320, "pub_year": 2009, "fic": "Nonfiction", "lang": "English"}, {"year": 2024, "title": "East West Street", "author": "Philippe Sands", "nationality": "British", "primary": "British", "gender": "M", "pages": 464, "pub_year": 2016, "fic": "Nonfiction", "lang": "English"}, {"year": 2024, "title": "The Light Years", "author": "Elizabeth Jane Howard", "nationality": "British", "primary": "British", "gender": "F", "pages": 528, "pub_year": 1990, "fic": "Fiction", "lang": "English"}, {"year": 2023, "title": "Assembly", "author": "Natasha Brown", "nationality": "British", "primary": "British", "gender": "F", "pages": 112, "pub_year": 2021, "fic": "Fiction", "lang": "English"}, {"year": 2023, "title": "Demon Copperhead", "author": "Barbara Kingsolver", "nationality": "American", "primary": "American", "gender": "F", "pages": 560, "pub_year": 2022, "fic": "Fiction", "lang": "English"}, {"year": 2023, "title": "Trust", "author": "Hernan Diaz", "nationality": "American", "primary": "American", "gender": "M", "pages": 416, "pub_year": 2022, "fic": "Fiction", "lang": "English"}, {"year": 2023, "title": "O Caledonia", "author": "Elspeth Barker", "nationality": "British", "primary": "British", "gender": "F", "pages": 160, "pub_year": 1991, "fic": "Fiction", "lang": "English"}, {"year": 2023, "title": "Heaven", "author": "Mieko Kawakami", "nationality": "Japanese", "primary": "Japanese", "gender": "F", "pages": 192, "pub_year": 2009, "fic": "Fiction", "lang": "Japanese"}, {"year": 2023, "title": "Brother of the More Famous Jack", "author": "Barbara Trapido", "nationality": "British", "primary": "British", "gender": "F", "pages": 288, "pub_year": 1982, "fic": "Fiction", "lang": "English"}, {"year": 2023, "title": "Orlando", "author": "Virginia Woolf", "nationality": "British", "primary": "British", "gender": "F", "pages": 240, "pub_year": 1928, "fic": "Fiction", "lang": "English"}, {"year": 2023, "title": "The Manningtree Witches", "author": "A.K. Blakemore", "nationality": "British", "primary": "British", "gender": "F", "pages": 320, "pub_year": 2021, "fic": "Fiction", "lang": "English"}, {"year": 2023, "title": "Small Things Like These", "author": "Claire Keegan", "nationality": "Irish", "primary": "Irish", "gender": "F", "pages": 128, "pub_year": 2021, "fic": "Fiction", "lang": "English"}, {"year": 2022, "title": "Mrs Bridge", "author": "Evan S. Connell", "nationality": "American", "primary": "American", "gender": "M", "pages": 256, "pub_year": 1959, "fic": "Fiction", "lang": "English"}, {"year": 2022, "title": "A Town Called Solace", "author": "Mary Lawson", "nationality": "Canadian", "primary": "Canadian", "gender": "F", "pages": 304, "pub_year": 2021, "fic": "Fiction", "lang": "English"}, {"year": 2022, "title": "Trespasses", "author": "Louise Kennedy", "nationality": "Irish", "primary": "Irish", "gender": "F", "pages": 320, "pub_year": 2022, "fic": "Fiction", "lang": "English"}, {"year": 2022, "title": "Crying in H Mart: A Memoir", "author": "Michelle Zauner", "nationality": "American", "primary": "American", "gender": "F", "pages": 256, "pub_year": 2021, "fic": "Nonfiction", "lang": "English"}, {"year": 2022, "title": "The Mermaid of Black Conch", "author": "Monique Roffey", "nationality": "Trinidadian-British", "primary": "Trinidadian", "gender": "F", "pages": 192, "pub_year": 2020, "fic": "Fiction", "lang": "English"}, {"year": 2022, "title": "Slouching Towards Bethlehem", "author": "Joan Didion", "nationality": "American", "primary": "American", "gender": "F", "pages": 240, "pub_year": 1968, "fic": "Nonfiction", "lang": "English"}, {"year": 2022, "title": "Sorrow and Bliss", "author": "Meg Mason", "nationality": "Australian", "primary": "Australian", "gender": "F", "pages": 352, "pub_year": 2020, "fic": "Fiction", "lang": "English"}, {"year": 2022, "title": "Afterlives", "author": "Abdulrazak Gurnah", "nationality": "Tanzanian-British", "primary": "Tanzanian", "gender": "M", "pages": 288, "pub_year": 2020, "fic": "Fiction", "lang": "English"}, {"year": 2022, "title": "The Promise", "author": "Damon Galgut", "nationality": "South African", "primary": "South African", "gender": "M", "pages": 304, "pub_year": 2021, "fic": "Fiction", "lang": "English"}, {"year": 2021, "title": "Burnt Sugar", "author": "Avni Doshi", "nationality": "American-Indian", "primary": "American", "gender": "F", "pages": 240, "pub_year": 2020, "fic": "Fiction", "lang": "English"}, {"year": 2021, "title": "Lean Fall Stand", "author": "Jon McGregor", "nationality": "British", "primary": "British", "gender": "M", "pages": 288, "pub_year": 2021, "fic": "Fiction", "lang": "English"}, {"year": 2021, "title": "A Swim in a Pond in the Rain", "author": "George Saunders", "nationality": "American", "primary": "American", "gender": "M", "pages": 432, "pub_year": 2021, "fic": "Nonfiction", "lang": "English"}, {"year": 2021, "title": "The Dutch House", "author": "Ann Patchett", "nationality": "American", "primary": "American", "gender": "F", "pages": 352, "pub_year": 2019, "fic": "Fiction", "lang": "English"}, {"year": 2021, "title": "Such a Fun Age", "author": "Kiley Reid", "nationality": "American", "primary": "American", "gender": "F", "pages": 320, "pub_year": 2019, "fic": "Fiction", "lang": "English"}, {"year": 2021, "title": "Lanny", "author": "Max Porter", "nationality": "British", "primary": "British", "gender": "M", "pages": 224, "pub_year": 2019, "fic": "Fiction", "lang": "English"}, {"year": 2021, "title": "Apeirogon", "author": "Colum McCann", "nationality": "Irish", "primary": "Irish", "gender": "M", "pages": 480, "pub_year": 2020, "fic": "Fiction", "lang": "English"}, {"year": 2021, "title": "Hamnet", "author": "Maggie O'Farrell", "nationality": "Irish-British", "primary": "Irish", "gender": "F", "pages": 384, "pub_year": 2020, "fic": "Fiction", "lang": "English"}, {"year": 2021, "title": "Shuggie Bain", "author": "Douglas Stuart", "nationality": "British", "primary": "British", "gender": "M", "pages": 448, "pub_year": 2020, "fic": "Fiction", "lang": "English"}, {"year": 2020, "title": "Women Talking", "author": "Miriam Toews", "nationality": "Canadian", "primary": "Canadian", "gender": "F", "pages": 240, "pub_year": 2018, "fic": "Fiction", "lang": "English"}, {"year": 2020, "title": "If This Is a Man / The Truce", "author": "Primo Levi", "nationality": "Italian", "primary": "Italian", "gender": "M", "pages": 400, "pub_year": 1947, "fic": "Nonfiction", "lang": "Italian"}, {"year": 2020, "title": "Fleishman Is in Trouble", "author": "Taffy Brodesser-Akner", "nationality": "American", "primary": "American", "gender": "F", "pages": 384, "pub_year": 2019, "fic": "Fiction", "lang": "English"}, {"year": 2020, "title": "Weather", "author": "Jenny Offill", "nationality": "American", "primary": "American", "gender": "F", "pages": 224, "pub_year": 2020, "fic": "Fiction", "lang": "English"}, {"year": 2020, "title": "Night Boat to Tangier", "author": "Kevin Barry", "nationality": "Irish", "primary": "Irish", "gender": "M", "pages": 288, "pub_year": 2019, "fic": "Fiction", "lang": "English"}, {"year": 2020, "title": "10 Minutes 38 Seconds in This Strange World", "author": "Elif Shafak", "nationality": "Turkish-British", "primary": "Turkish", "gender": "F", "pages": 320, "pub_year": 2019, "fic": "Fiction", "lang": "English"}, {"year": 2020, "title": "A Manual for Cleaning Women", "author": "Lucia Berlin", "nationality": "American", "primary": "American", "gender": "F", "pages": 432, "pub_year": 2015, "fic": "Fiction", "lang": "English"}, {"year": 2020, "title": "Drive Your Plow Over the Bones of the Dead", "author": "Olga Tokarczuk", "nationality": "Polish", "primary": "Polish", "gender": "F", "pages": 288, "pub_year": 2009, "fic": "Fiction", "lang": "Polish"}, {"year": 2020, "title": "Girl, Woman, Other", "author": "Bernardine Evaristo", "nationality": "British", "primary": "British", "gender": "F", "pages": 464, "pub_year": 2019, "fic": "Fiction", "lang": "English"}, {"year": 2020, "title": "Austerlitz", "author": "W.G. Sebald", "nationality": "German", "primary": "German", "gender": "M", "pages": 416, "pub_year": 2001, "fic": "Fiction", "lang": "German"}, {"year": 2020, "title": "Olive, Again", "author": "Elizabeth Strout", "nationality": "American", "primary": "American", "gender": "F", "pages": 304, "pub_year": 2019, "fic": "Fiction", "lang": "English"}, {"year": 2019, "title": "Waterland", "author": "Graham Swift", "nationality": "British", "primary": "British", "gender": "M", "pages": 368, "pub_year": 1983, "fic": "Fiction", "lang": "English"}, {"year": 2019, "title": "Bonjour Tristesse", "author": "Françoise Sagan", "nationality": "French", "primary": "French", "gender": "F", "pages": 160, "pub_year": 1954, "fic": "Fiction", "lang": "French"}, {"year": 2019, "title": "Miss Pettigrew Lives for a Day", "author": "Winifred Watson", "nationality": "British", "primary": "British", "gender": "F", "pages": 240, "pub_year": 1938, "fic": "Fiction", "lang": "English"}, {"year": 2019, "title": "Educated", "author": "Tara Westover", "nationality": "American", "primary": "American", "gender": "F", "pages": 352, "pub_year": 2018, "fic": "Nonfiction", "lang": "English"}, {"year": 2019, "title": "A Long Way from Home", "author": "Peter Carey", "nationality": "Australian", "primary": "Australian", "gender": "M", "pages": 368, "pub_year": 2017, "fic": "Fiction", "lang": "English"}, {"year": 2019, "title": "The Familiars", "author": "Stacey Halls", "nationality": "British", "primary": "British", "gender": "F", "pages": 352, "pub_year": 2019, "fic": "Fiction", "lang": "English"}, {"year": 2019, "title": "The Shipping News", "author": "Annie Proulx", "nationality": "American", "primary": "American", "gender": "F", "pages": 352, "pub_year": 1993, "fic": "Fiction", "lang": "English"}, {"year": 2019, "title": "There There", "author": "Tommy Orange", "nationality": "American", "primary": "American", "gender": "M", "pages": 304, "pub_year": 2018, "fic": "Fiction", "lang": "English"}, {"year": 2019, "title": "Convenience Store Woman", "author": "Sayaka Murata", "nationality": "Japanese", "primary": "Japanese", "gender": "F", "pages": 176, "pub_year": 2016, "fic": "Fiction", "lang": "Japanese"}, {"year": 2019, "title": "On the Black Hill", "author": "Bruce Chatwin", "nationality": "British", "primary": "British", "gender": "M", "pages": 256, "pub_year": 1982, "fic": "Fiction", "lang": "English"}, {"year": 2018, "title": "The Mandibles: A Family, 2029-2047", "author": "Lionel Shriver", "nationality": "American", "primary": "American", "gender": "F", "pages": 416, "pub_year": 2016, "fic": "Fiction", "lang": "English"}, {"year": 2018, "title": "To the Wedding", "author": "John Berger", "nationality": "British", "primary": "British", "gender": "M", "pages": 208, "pub_year": 1995, "fic": "Fiction", "lang": "English"}, {"year": 2018, "title": "Sing, Unburied, Sing", "author": "Jesmyn Ward", "nationality": "American", "primary": "American", "gender": "F", "pages": 304, "pub_year": 2017, "fic": "Fiction", "lang": "English"}, {"year": 2018, "title": "Americanah", "author": "Chimamanda Ngozi Adichie", "nationality": "Nigerian", "primary": "Nigerian", "gender": "F", "pages": 496, "pub_year": 2013, "fic": "Fiction", "lang": "English"}, {"year": 2018, "title": "The Tidal Zone", "author": "Sarah Moss", "nationality": "British", "primary": "British", "gender": "F", "pages": 336, "pub_year": 2016, "fic": "Fiction", "lang": "English"}, {"year": 2018, "title": "The Middlepause", "author": "Marina Benjamin", "nationality": "British", "primary": "British", "gender": "F", "pages": 224, "pub_year": 2016, "fic": "Nonfiction", "lang": "English"}, {"year": 2018, "title": "Call Me By Your Name", "author": "André Aciman", "nationality": "American", "primary": "American", "gender": "M", "pages": 256, "pub_year": 2007, "fic": "Fiction", "lang": "English"}, {"year": 2018, "title": "Home Fire", "author": "Kamila Shamsie", "nationality": "British-Pakistani", "primary": "British", "gender": "F", "pages": 288, "pub_year": 2017, "fic": "Fiction", "lang": "English"}, {"year": 2018, "title": "Lincoln in the Bardo", "author": "George Saunders", "nationality": "American", "primary": "American", "gender": "M", "pages": 368, "pub_year": 2017, "fic": "Fiction", "lang": "English"}, {"year": 2017, "title": "The Turning", "author": "Tim Winton", "nationality": "Australian", "primary": "Australian", "gender": "M", "pages": 320, "pub_year": 2004, "fic": "Fiction", "lang": "English"}, {"year": 2017, "title": "The Sellout", "author": "Paul Beatty", "nationality": "American", "primary": "American", "gender": "M", "pages": 304, "pub_year": 2015, "fic": "Fiction", "lang": "English"}, {"year": 2017, "title": "Olive Kitteridge", "author": "Elizabeth Strout", "nationality": "American", "primary": "American", "gender": "F", "pages": 288, "pub_year": 2008, "fic": "Fiction", "lang": "English"}, {"year": 2017, "title": "His Bloody Project", "author": "Graeme Macrae Burnet", "nationality": "British", "primary": "British", "gender": "M", "pages": 288, "pub_year": 2015, "fic": "Fiction", "lang": "English"}, {"year": 2017, "title": "The Noise of Time", "author": "Julian Barnes", "nationality": "British", "primary": "British", "gender": "M", "pages": 192, "pub_year": 2016, "fic": "Fiction", "lang": "English"}, {"year": 2017, "title": "The Sympathizer", "author": "Viet Thanh Nguyen", "nationality": "American", "primary": "American", "gender": "M", "pages": 384, "pub_year": 2015, "fic": "Fiction", "lang": "English"}, {"year": 2017, "title": "The Power", "author": "Naomi Alderman", "nationality": "British", "primary": "British", "gender": "F", "pages": 352, "pub_year": 2016, "fic": "Fiction", "lang": "English"}, {"year": 2017, "title": "Being Mortal", "author": "Atul Gawande", "nationality": "American", "primary": "American", "gender": "M", "pages": 304, "pub_year": 2014, "fic": "Nonfiction", "lang": "English"}, {"year": 2017, "title": "The Underground Railroad", "author": "Colson Whitehead", "nationality": "American", "primary": "American", "gender": "M", "pages": 336, "pub_year": 2016, "fic": "Fiction", "lang": "English"}, {"year": 2016, "title": "The Amazing Adventures of Kavalier & Clay", "author": "Michael Chabon", "nationality": "American", "primary": "American", "gender": "M", "pages": 656, "pub_year": 2000, "fic": "Fiction", "lang": "English"}, {"year": 2016, "title": "The Vegetarian", "author": "Han Kang", "nationality": "South Korean", "primary": "South Korean", "gender": "F", "pages": 192, "pub_year": 2007, "fic": "Fiction", "lang": "Korean"}, {"year": 2016, "title": "H is for Hawk", "author": "Helen Macdonald", "nationality": "British", "primary": "British", "gender": "F", "pages": 320, "pub_year": 2014, "fic": "Nonfiction", "lang": "English"}, {"year": 2016, "title": "The Kreutzer Sonata and Other Stories", "author": "Leo Tolstoy", "nationality": "Russian", "primary": "Russian", "gender": "M", "pages": 304, "pub_year": 1889, "fic": "Fiction", "lang": "Russian"}, {"year": 2016, "title": "Submission", "author": "Michel Houellebecq", "nationality": "French", "primary": "French", "gender": "M", "pages": 256, "pub_year": 2015, "fic": "Fiction", "lang": "French"}, {"year": 2016, "title": "A Little Life", "author": "Hanya Yanagihara", "nationality": "American", "primary": "American", "gender": "F", "pages": 720, "pub_year": 2015, "fic": "Fiction", "lang": "English"}, {"year": 2016, "title": "The Death of the Heart", "author": "Elizabeth Bowen", "nationality": "Irish-British", "primary": "Irish", "gender": "F", "pages": 432, "pub_year": 1938, "fic": "Fiction", "lang": "English"}, {"year": 2016, "title": "Breakfast at Tiffany's", "author": "Truman Capote", "nationality": "American", "primary": "American", "gender": "M", "pages": 160, "pub_year": 1958, "fic": "Fiction", "lang": "English"}, {"year": 2016, "title": "The House of Mirth", "author": "Edith Wharton", "nationality": "American", "primary": "American", "gender": "F", "pages": 368, "pub_year": 1905, "fic": "Fiction", "lang": "English"}, {"year": 2015, "title": "Keep the Aspidistra Flying", "author": "George Orwell", "nationality": "British", "primary": "British", "gender": "M", "pages": 256, "pub_year": 1936, "fic": "Fiction", "lang": "English"}, {"year": 2015, "title": "The First Bad Man", "author": "Miranda July", "nationality": "American", "primary": "American", "gender": "F", "pages": 288, "pub_year": 2015, "fic": "Fiction", "lang": "English"}, {"year": 2015, "title": "All the Birds, Singing", "author": "Evie Wyld", "nationality": "British-Australian", "primary": "British", "gender": "F", "pages": 240, "pub_year": 2013, "fic": "Fiction", "lang": "English"}, {"year": 2015, "title": "The Days of Abandonment", "author": "Elena Ferrante", "nationality": "Italian", "primary": "Italian", "gender": "F", "pages": 192, "pub_year": 2002, "fic": "Fiction", "lang": "Italian"}, {"year": 2015, "title": "Leaving the Atocha Station", "author": "Ben Lerner", "nationality": "American", "primary": "American", "gender": "M", "pages": 192, "pub_year": 2011, "fic": "Fiction", "lang": "English"}, {"year": 2015, "title": "All the Light We Cannot See", "author": "Anthony Doerr", "nationality": "American", "primary": "American", "gender": "M", "pages": 544, "pub_year": 2014, "fic": "Fiction", "lang": "English"}, {"year": 2015, "title": "The Bees", "author": "Laline Paull", "nationality": "British", "primary": "British", "gender": "F", "pages": 352, "pub_year": 2014, "fic": "Fiction", "lang": "English"}, {"year": 2015, "title": "The Narrow Road to the Deep North", "author": "Richard Flanagan", "nationality": "Australian", "primary": "Australian", "gender": "M", "pages": 432, "pub_year": 2013, "fic": "Fiction", "lang": "English"}, {"year": 2015, "title": "The Testament of Mary", "author": "Colm Tóibín", "nationality": "Irish", "primary": "Irish", "gender": "M", "pages": 112, "pub_year": 2012, "fic": "Fiction", "lang": "English"}, {"year": 2015, "title": "A Thousand Acres", "author": "Jane Smiley", "nationality": "American", "primary": "American", "gender": "F", "pages": 384, "pub_year": 1991, "fic": "Fiction", "lang": "English"}, {"year": 2014, "title": "Mrs Palfrey at the Claremont", "author": "Elizabeth Taylor", "nationality": "British", "primary": "British", "gender": "F", "pages": 208, "pub_year": 1971, "fic": "Fiction", "lang": "English"}, {"year": 2014, "title": "Life After Life", "author": "Kate Atkinson", "nationality": "British", "primary": "British", "gender": "F", "pages": 480, "pub_year": 2013, "fic": "Fiction", "lang": "English"}, {"year": 2014, "title": "The Goldfinch", "author": "Donna Tartt", "nationality": "American", "primary": "American", "gender": "F", "pages": 784, "pub_year": 2013, "fic": "Fiction", "lang": "English"}, {"year": 2014, "title": "Chronicle of a Death Foretold", "author": "Gabriel García Márquez", "nationality": "Colombian", "primary": "Colombian", "gender": "M", "pages": 128, "pub_year": 1981, "fic": "Fiction", "lang": "Spanish"}, {"year": 2014, "title": "May We Be Forgiven", "author": "A.M. Homes", "nationality": "American", "primary": "American", "gender": "F", "pages": 480, "pub_year": 2012, "fic": "Fiction", "lang": "English"}, {"year": 2014, "title": "We Are All Completely Beside Ourselves", "author": "Karen Joy Fowler", "nationality": "American", "primary": "American", "gender": "F", "pages": 320, "pub_year": 2013, "fic": "Fiction", "lang": "English"}, {"year": 2014, "title": "Sisters of the East End", "author": "Helen Batten", "nationality": "British", "primary": "British", "gender": "F", "pages": 320, "pub_year": 2013, "fic": "Nonfiction", "lang": "English"}, {"year": 2014, "title": "We Need New Names", "author": "NoViolet Bulawayo", "nationality": "Zimbabwean", "primary": "Zimbabwean", "gender": "F", "pages": 304, "pub_year": 2013, "fic": "Fiction", "lang": "English"}, {"year": 2014, "title": "Elizabeth Is Missing", "author": "Emma Healey", "nationality": "British", "primary": "British", "gender": "F", "pages": 304, "pub_year": 2014, "fic": "Fiction", "lang": "English"}, {"year": 2014, "title": "Beloved", "author": "Toni Morrison", "nationality": "American", "primary": "American", "gender": "F", "pages": 336, "pub_year": 1987, "fic": "Fiction", "lang": "English"}, {"year": 2013, "title": "Stoner", "author": "John Williams", "nationality": "American", "primary": "American", "gender": "M", "pages": 288, "pub_year": 1965, "fic": "Fiction", "lang": "English"}, {"year": 2013, "title": "The Great Gatsby", "author": "F. Scott Fitzgerald", "nationality": "American", "primary": "American", "gender": "M", "pages": 180, "pub_year": 1925, "fic": "Fiction", "lang": "English"}, {"year": 2013, "title": "What I Loved", "author": "Siri Hustvedt", "nationality": "American", "primary": "American", "gender": "F", "pages": 384, "pub_year": 2003, "fic": "Fiction", "lang": "English"}, {"year": 2013, "title": "I Feel Bad About My Neck", "author": "Nora Ephron", "nationality": "American", "primary": "American", "gender": "F", "pages": 160, "pub_year": 2006, "fic": "Nonfiction", "lang": "English"}, {"year": 2013, "title": "The Little Stranger", "author": "Sarah Waters", "nationality": "British", "primary": "British", "gender": "F", "pages": 512, "pub_year": 2009, "fic": "Fiction", "lang": "English"}, {"year": 2013, "title": "Lady Oracle", "author": "Margaret Atwood", "nationality": "Canadian", "primary": "Canadian", "gender": "F", "pages": 400, "pub_year": 1976, "fic": "Fiction", "lang": "English"}, {"year": 2013, "title": "The Examined Life", "author": "Stephen Grosz", "nationality": "British-American", "primary": "British", "gender": "M", "pages": 240, "pub_year": 2013, "fic": "Nonfiction", "lang": "English"}, {"year": 2013, "title": "Building Stories", "author": "Chris Ware", "nationality": "American", "primary": "American", "gender": "M", "pages": 260, "pub_year": 2012, "fic": "Fiction", "lang": "English"}, {"year": 2013, "title": "The Bell Jar", "author": "Sylvia Plath", "nationality": "American", "primary": "American", "gender": "F", "pages": 244, "pub_year": 1963, "fic": "Fiction", "lang": "English"}, {"year": 2013, "title": "John Saturnall's Feast", "author": "Lawrence Norfolk", "nationality": "British", "primary": "British", "gender": "M", "pages": 416, "pub_year": 2012, "fic": "Fiction", "lang": "English"}, {"year": 2012, "title": "Swimming Home", "author": "Deborah Levy", "nationality": "British", "primary": "British", "gender": "F", "pages": 160, "pub_year": 2011, "fic": "Fiction", "lang": "English"}, {"year": 2012, "title": "Night Waking", "author": "Sarah Moss", "nationality": "British", "primary": "British", "gender": "F", "pages": 336, "pub_year": 2011, "fic": "Fiction", "lang": "English"}, {"year": 2012, "title": "Why Be Happy When You Could Be Normal?", "author": "Jeanette Winterson", "nationality": "British", "primary": "British", "gender": "F", "pages": 240, "pub_year": 2011, "fic": "Nonfiction", "lang": "English"}, {"year": 2012, "title": "The Sisters Brothers", "author": "Patrick deWitt", "nationality": "Canadian", "primary": "Canadian", "gender": "M", "pages": 336, "pub_year": 2011, "fic": "Fiction", "lang": "English"}, {"year": 2012, "title": "The Brief Wondrous Life of Oscar Wao", "author": "Junot Díaz", "nationality": "Dominican-American", "primary": "American", "gender": "M", "pages": 352, "pub_year": 2007, "fic": "Fiction", "lang": "English"}, {"year": 2012, "title": "The Song of Achilles", "author": "Madeline Miller", "nationality": "American", "primary": "American", "gender": "F", "pages": 384, "pub_year": 2011, "fic": "Fiction", "lang": "English"}, {"year": 2012, "title": "The Master and Margarita", "author": "Mikhail Bulgakov", "nationality": "Russian", "primary": "Russian", "gender": "M", "pages": 432, "pub_year": 1967, "fic": "Fiction", "lang": "Russian"}, {"year": 2012, "title": "Skios", "author": "Michael Frayn", "nationality": "British", "primary": "British", "gender": "M", "pages": 288, "pub_year": 2012, "fic": "Fiction", "lang": "English"}, {"year": 2012, "title": "Pure", "author": "Andrew Miller", "nationality": "British", "primary": "British", "gender": "M", "pages": 352, "pub_year": 2011, "fic": "Fiction", "lang": "English"}, {"year": 2011, "title": "A Visit from the Goon Squad", "author": "Jennifer Egan", "nationality": "American", "primary": "American", "gender": "F", "pages": 352, "pub_year": 2010, "fic": "Fiction", "lang": "English"}, {"year": 2011, "title": "By Grand Central Station I Sat Down and Wept", "author": "Elizabeth Smart", "nationality": "Canadian", "primary": "Canadian", "gender": "F", "pages": 112, "pub_year": 1945, "fic": "Fiction", "lang": "English"}, {"year": 2011, "title": "Great House", "author": "Nicole Krauss", "nationality": "American", "primary": "American", "gender": "F", "pages": 304, "pub_year": 2010, "fic": "Fiction", "lang": "English"}, {"year": 2011, "title": "I Curse the River of Time", "author": "Per Petterson", "nationality": "Norwegian", "primary": "Norwegian", "gender": "M", "pages": 224, "pub_year": 2008, "fic": "Fiction", "lang": "Norwegian"}, {"year": 2011, "title": "Just Kids", "author": "Patti Smith", "nationality": "American", "primary": "American", "gender": "F", "pages": 304, "pub_year": 2010, "fic": "Nonfiction", "lang": "English"}, {"year": 2011, "title": "Mister Pip", "author": "Lloyd Jones", "nationality": "New Zealander", "primary": "New Zealander", "gender": "M", "pages": 256, "pub_year": 2006, "fic": "Fiction", "lang": "English"}, {"year": 2011, "title": "Room", "author": "Emma Donoghue", "nationality": "Irish-Canadian", "primary": "Irish", "gender": "F", "pages": 336, "pub_year": 2010, "fic": "Fiction", "lang": "English"}, {"year": 2011, "title": "The Good Soldier", "author": "Ford Madox Ford", "nationality": "British", "primary": "British", "gender": "M", "pages": 240, "pub_year": 1915, "fic": "Fiction", "lang": "English"}, {"year": 2011, "title": "When I Lived in Modern Times", "author": "Linda Grant", "nationality": "British", "primary": "British", "gender": "F", "pages": 272, "pub_year": 2000, "fic": "Fiction", "lang": "English"}, {"year": 2011, "title": "The Waste Land and Other Poems", "author": "T.S. Eliot", "nationality": "British-American", "primary": "American", "gender": "M", "pages": 88, "pub_year": 1922, "fic": "Fiction", "lang": "English"}, {"year": 2010, "title": "Nocturnes", "author": "Kazuo Ishiguro", "nationality": "British", "primary": "British", "gender": "M", "pages": 240, "pub_year": 2009, "fic": "Fiction", "lang": "English"}, {"year": 2010, "title": "A Life in Secrets", "author": "Sarah Helm", "nationality": "British", "primary": "British", "gender": "F", "pages": 528, "pub_year": 2005, "fic": "Nonfiction", "lang": "English"}, {"year": 2010, "title": "A Fine Balance", "author": "Rohinton Mistry", "nationality": "Canadian-Indian", "primary": "Indian", "gender": "M", "pages": 624, "pub_year": 1995, "fic": "Fiction", "lang": "English"}, {"year": 2010, "title": "The Lacuna", "author": "Barbara Kingsolver", "nationality": "American", "primary": "American", "gender": "F", "pages": 528, "pub_year": 2009, "fic": "Fiction", "lang": "English"}, {"year": 2010, "title": "A Gate at the Stairs", "author": "Lorrie Moore", "nationality": "American", "primary": "American", "gender": "F", "pages": 336, "pub_year": 2009, "fic": "Fiction", "lang": "English"}, {"year": 2010, "title": "What Is the What", "author": "Dave Eggers", "nationality": "American", "primary": "American", "gender": "M", "pages": 560, "pub_year": 2006, "fic": "Fiction", "lang": "English"}, {"year": 2010, "title": "The Reluctant Fundamentalist", "author": "Mohsin Hamid", "nationality": "Pakistani", "primary": "Pakistani", "gender": "M", "pages": 192, "pub_year": 2007, "fic": "Fiction", "lang": "English"}, {"year": 2010, "title": "The White Tiger", "author": "Aravind Adiga", "nationality": "Indian", "primary": "Indian", "gender": "M", "pages": 336, "pub_year": 2008, "fic": "Fiction", "lang": "English"}, {"year": 2010, "title": "Offshore", "author": "Penelope Fitzgerald", "nationality": "British", "primary": "British", "gender": "F", "pages": 192, "pub_year": 1979, "fic": "Fiction", "lang": "English"}, {"year": 2010, "title": "Death and the Penguin", "author": "Andrey Kurkov", "nationality": "Ukrainian", "primary": "Ukrainian", "gender": "M", "pages": 240, "pub_year": 1996, "fic": "Fiction", "lang": "Russian"}, {"year": 2010, "title": "Half of a Yellow Sun", "author": "Chimamanda Ngozi Adichie", "nationality": "Nigerian", "primary": "Nigerian", "gender": "F", "pages": 448, "pub_year": 2006, "fic": "Fiction", "lang": "English"}, {"year": 2009, "title": "The Suspicions of Mr. Whicher", "author": "Kate Summerscale", "nationality": "British", "primary": "British", "gender": "F", "pages": 384, "pub_year": 2008, "fic": "Nonfiction", "lang": "English"}, {"year": 2009, "title": "The Outcast", "author": "Sadie Jones", "nationality": "British", "primary": "British", "gender": "F", "pages": 368, "pub_year": 2008, "fic": "Fiction", "lang": "English"}, {"year": 2009, "title": "Revolutionary Road", "author": "Richard Yates", "nationality": "American", "primary": "American", "gender": "M", "pages": 368, "pub_year": 1961, "fic": "Fiction", "lang": "English"}, {"year": 2009, "title": "Wolf Hall", "author": "Hilary Mantel", "nationality": "British", "primary": "British", "gender": "F", "pages": 656, "pub_year": 2009, "fic": "Fiction", "lang": "English"}, {"year": 2009, "title": "The Old Man and the Sea", "author": "Ernest Hemingway", "nationality": "American", "primary": "American", "gender": "M", "pages": 128, "pub_year": 1952, "fic": "Fiction", "lang": "English"}, {"year": 2009, "title": "The Other Hand", "author": "Chris Cleave", "nationality": "British", "primary": "British", "gender": "M", "pages": 384, "pub_year": 2008, "fic": "Fiction", "lang": "English"}, {"year": 2009, "title": "Something to Tell You", "author": "Hanif Kureishi", "nationality": "British", "primary": "British", "gender": "M", "pages": 352, "pub_year": 2008, "fic": "Fiction", "lang": "English"}, {"year": 2009, "title": "Home", "author": "Marilynne Robinson", "nationality": "American", "primary": "American", "gender": "F", "pages": 336, "pub_year": 2008, "fic": "Fiction", "lang": "English"}, {"year": 2009, "title": "The Tin Drum", "author": "Günter Grass", "nationality": "German", "primary": "German", "gender": "M", "pages": 592, "pub_year": 1959, "fic": "Fiction", "lang": "German"}, {"year": 2009, "title": "The Secret Scripture", "author": "Sebastian Barry", "nationality": "Irish", "primary": "Irish", "gender": "M", "pages": 320, "pub_year": 2008, "fic": "Fiction", "lang": "English"}, {"year": 2009, "title": "The Vanishing Act of Esme Lennox", "author": "Maggie O'Farrell", "nationality": "Irish-British", "primary": "Irish", "gender": "F", "pages": 256, "pub_year": 2006, "fic": "Fiction", "lang": "English"}, {"year": 2008, "title": "The Light of Day", "author": "Graham Swift", "nationality": "British", "primary": "British", "gender": "M", "pages": 256, "pub_year": 2003, "fic": "Fiction", "lang": "English"}, {"year": 2008, "title": "No One Belongs Here More Than You", "author": "Miranda July", "nationality": "American", "primary": "American", "gender": "F", "pages": 224, "pub_year": 2007, "fic": "Fiction", "lang": "English"}, {"year": 2008, "title": "Disgrace", "author": "J.M. Coetzee", "nationality": "South African", "primary": "South African", "gender": "M", "pages": 224, "pub_year": 1999, "fic": "Fiction", "lang": "English"}, {"year": 2008, "title": "Netherland", "author": "Joseph O'Neill", "nationality": "Irish", "primary": "Irish", "gender": "M", "pages": 256, "pub_year": 2008, "fic": "Fiction", "lang": "English"}, {"year": 2008, "title": "The Corrections", "author": "Jonathan Franzen", "nationality": "American", "primary": "American", "gender": "M", "pages": 576, "pub_year": 2001, "fic": "Fiction", "lang": "English"}, {"year": 2008, "title": "Norwegian Wood", "author": "Haruki Murakami", "nationality": "Japanese", "primary": "Japanese", "gender": "M", "pages": 296, "pub_year": 1987, "fic": "Fiction", "lang": "Japanese"}, {"year": 2008, "title": "The Gathering", "author": "Anne Enright", "nationality": "Irish", "primary": "Irish", "gender": "F", "pages": 272, "pub_year": 2007, "fic": "Fiction", "lang": "English"}, {"year": 2008, "title": "The Grass Is Singing", "author": "Doris Lessing", "nationality": "British", "primary": "British", "gender": "F", "pages": 240, "pub_year": 1950, "fic": "Fiction", "lang": "English"}, {"year": 2008, "title": "If Nobody Speaks of Remarkable Things", "author": "Jon McGregor", "nationality": "British", "primary": "British", "gender": "M", "pages": 288, "pub_year": 2002, "fic": "Fiction", "lang": "English"}, {"year": 2008, "title": "The Grapes of Wrath", "author": "John Steinbeck", "nationality": "American", "primary": "American", "gender": "M", "pages": 464, "pub_year": 1939, "fic": "Fiction", "lang": "English"}, {"year": 2008, "title": "Uncommon Arrangements", "author": "Katie Roiphe", "nationality": "American", "primary": "American", "gender": "F", "pages": 352, "pub_year": 2007, "fic": "Nonfiction", "lang": "English"}, {"year": 2008, "title": "Middlesex", "author": "Jeffrey Eugenides", "nationality": "American", "primary": "American", "gender": "M", "pages": 544, "pub_year": 2002, "fic": "Fiction", "lang": "English"}, {"year": 2007, "title": "Mother's Milk", "author": "Edward St Aubyn", "nationality": "British", "primary": "British", "gender": "M", "pages": 288, "pub_year": 2006, "fic": "Fiction", "lang": "English"}, {"year": 2007, "title": "The Ginger Tree", "author": "Oswald Wynd", "nationality": "British", "primary": "British", "gender": "M", "pages": 320, "pub_year": 1977, "fic": "Fiction", "lang": "English"}, {"year": 2007, "title": "The Tenderness of Wolves", "author": "Stef Penney", "nationality": "British", "primary": "British", "gender": "F", "pages": 464, "pub_year": 2006, "fic": "Fiction", "lang": "English"}, {"year": 2007, "title": "The New York Trilogy", "author": "Paul Auster", "nationality": "American", "primary": "American", "gender": "M", "pages": 320, "pub_year": 1987, "fic": "Fiction", "lang": "English"}, {"year": 2007, "title": "The Kingdom by the Sea", "author": "Paul Theroux", "nationality": "American", "primary": "American", "gender": "M", "pages": 368, "pub_year": 1983, "fic": "Nonfiction", "lang": "English"}, {"year": 2007, "title": "A Bend in the River", "author": "V.S. Naipaul", "nationality": "Trinidadian-British", "primary": "British", "gender": "M", "pages": 304, "pub_year": 1979, "fic": "Fiction", "lang": "English"}, {"year": 2007, "title": "The Kingdom of Ashes", "author": "Robert Edric", "nationality": "British", "primary": "British", "gender": "M", "pages": 320, "pub_year": 2007, "fic": "Fiction", "lang": "English"}, {"year": 2007, "title": "Affluenza", "author": "Oliver James", "nationality": "British", "primary": "British", "gender": "M", "pages": 432, "pub_year": 2007, "fic": "Nonfiction", "lang": "English"}, {"year": 2007, "title": "Exit Ghost", "author": "Philip Roth", "nationality": "American", "primary": "American", "gender": "M", "pages": 304, "pub_year": 2007, "fic": "Fiction", "lang": "English"}, {"year": 2007, "title": "Slaughterhouse-Five", "author": "Kurt Vonnegut", "nationality": "American", "primary": "American", "gender": "M", "pages": 224, "pub_year": 1969, "fic": "Fiction", "lang": "English"}, {"year": 2007, "title": "Rabbit, Run", "author": "John Updike", "nationality": "American", "primary": "American", "gender": "M", "pages": 264, "pub_year": 1960, "fic": "Fiction", "lang": "English"}, {"year": 2006, "title": "Never Let Me Go", "author": "Kazuo Ishiguro", "nationality": "British", "primary": "British", "gender": "M", "pages": 304, "pub_year": 2005, "fic": "Fiction", "lang": "English"}, {"year": 2006, "title": "Valley of the Dolls", "author": "Jacqueline Susann", "nationality": "American", "primary": "American", "gender": "F", "pages": 512, "pub_year": 1966, "fic": "Fiction", "lang": "English"}, {"year": 2006, "title": "The Line of Beauty", "author": "Alan Hollinghurst", "nationality": "British", "primary": "British", "gender": "M", "pages": 512, "pub_year": 2004, "fic": "Fiction", "lang": "English"}, {"year": 2006, "title": "My Name Is Red", "author": "Orhan Pamuk", "nationality": "Turkish", "primary": "Turkish", "gender": "M", "pages": 432, "pub_year": 1998, "fic": "Fiction", "lang": "Turkish"}, {"year": 2006, "title": "The Accidental", "author": "Ali Smith", "nationality": "British", "primary": "British", "gender": "F", "pages": 320, "pub_year": 2005, "fic": "Fiction", "lang": "English"}, {"year": 2006, "title": "Everyman", "author": "Philip Roth", "nationality": "American", "primary": "American", "gender": "M", "pages": 192, "pub_year": 2006, "fic": "Fiction", "lang": "English"}, {"year": 2006, "title": "Saturday", "author": "Ian McEwan", "nationality": "British", "primary": "British", "gender": "M", "pages": 288, "pub_year": 2005, "fic": "Fiction", "lang": "English"}, {"year": 2006, "title": "Runaway", "author": "Alice Munro", "nationality": "Canadian", "primary": "Canadian", "gender": "F", "pages": 352, "pub_year": 2004, "fic": "Fiction", "lang": "English"}, {"year": 2006, "title": "Human Traces", "author": "Sebastian Faulks", "nationality": "British", "primary": "British", "gender": "M", "pages": 624, "pub_year": 2005, "fic": "Fiction", "lang": "English"}, {"year": 2006, "title": "The Tipping Point", "author": "Malcolm Gladwell", "nationality": "Canadian-British", "primary": "Canadian", "gender": "M", "pages": 304, "pub_year": 2000, "fic": "Nonfiction", "lang": "English"}, {"year": 2006, "title": "Hey Yeah Right Get a Life", "author": "Helen Simpson", "nationality": "British", "primary": "British", "gender": "F", "pages": 208, "pub_year": 2000, "fic": "Fiction", "lang": "English"}, {"year": 2005, "title": "The Kite Runner", "author": "Khaled Hosseini", "nationality": "Afghan-American", "primary": "Afghan", "gender": "M", "pages": 384, "pub_year": 2003, "fic": "Fiction", "lang": "English"}, {"year": 2005, "title": "The Bookseller of Kabul", "author": "Åsne Seierstad", "nationality": "Norwegian", "primary": "Norwegian", "gender": "F", "pages": 304, "pub_year": 2002, "fic": "Nonfiction", "lang": "Norwegian"}, {"year": 2005, "title": "White Mughals", "author": "William Dalrymple", "nationality": "British", "primary": "British", "gender": "M", "pages": 624, "pub_year": 2002, "fic": "Nonfiction", "lang": "English"}, {"year": 2005, "title": "A Severed Head", "author": "Iris Murdoch", "nationality": "British", "primary": "British", "gender": "F", "pages": 224, "pub_year": 1961, "fic": "Fiction", "lang": "English"}, {"year": 2005, "title": "We Need to Talk About Kevin", "author": "Lionel Shriver", "nationality": "American", "primary": "American", "gender": "F", "pages": 400, "pub_year": 2003, "fic": "Fiction", "lang": "English"}, {"year": 2005, "title": "Small Island", "author": "Andrea Levy", "nationality": "British", "primary": "British", "gender": "F", "pages": 448, "pub_year": 2004, "fic": "Fiction", "lang": "English"}, {"year": 2005, "title": "Cloud Atlas", "author": "David Mitchell", "nationality": "British", "primary": "British", "gender": "M", "pages": 528, "pub_year": 2004, "fic": "Fiction", "lang": "English"}, {"year": 2005, "title": "The Time Traveler's Wife", "author": "Audrey Niffenegger", "nationality": "American", "primary": "American", "gender": "F", "pages": 528, "pub_year": 2003, "fic": "Fiction", "lang": "English"}, {"year": 2005, "title": "The Reader", "author": "Bernhard Schlink", "nationality": "German", "primary": "German", "gender": "M", "pages": 224, "pub_year": 1995, "fic": "Fiction", "lang": "German"}];
+
+// -------- TABS --------
+document.querySelectorAll('.tab').forEach(t => {
+  t.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById('panel-' + t.dataset.tab).classList.add('active');
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+});
+
+// -------- YEAR TIMELINE --------
+function buildTimeline(elId, onclick) {
+  const el = document.getElementById(elId);
+  const yearCounts = {};
+  BOOKS.forEach(b => { yearCounts[b.year] = (yearCounts[b.year]||0) + 1; });
+  const years = Object.keys(yearCounts).map(Number).sort((a,b) => a-b);
+  const maxC = Math.max(...Object.values(yearCounts));
+  el.innerHTML = '';
+  years.forEach(y => {
+    const div = document.createElement('div');
+    div.className = 'tl-year';
+    div.dataset.year = y;
+    const h = Math.round((yearCounts[y]/maxC) * 110) + 4;
+    div.innerHTML = `<div class="tl-count">${yearCounts[y]}</div><div class="tl-bar" style="height:${h}px"></div><div class="tl-label">${y}</div>`;
+    if (onclick) div.addEventListener('click', () => onclick(y));
+    el.appendChild(div);
+  });
+}
+buildTimeline('timeline');
+
+// Year meta — total spans
+document.getElementById('year-meta').textContent =
+  `mean ${Math.round(BOOKS.length / new Set(BOOKS.map(b => b.year)).size * 10)/10} books per year`;
+
+// -------- NATIONALITY BARS --------
+const natCounts = {};
+BOOKS.forEach(b => { natCounts[b.primary] = (natCounts[b.primary]||0) + 1; });
+const sortedNats = Object.entries(natCounts).sort((a,b) => b[1]-a[1]).slice(0, 14);
+const maxNat = sortedNats[0][1];
+document.getElementById('nat-bars').innerHTML = sortedNats.map(([n, c]) => {
+  const pct = ((c / BOOKS.length) * 100).toFixed(1);
+  return `<div class="bar-row">
+    <div class="bar-label">${n}</div>
+    <div class="bar-track"><div class="bar-fill" style="width:${(c/maxNat)*100}%"></div></div>
+    <div class="bar-val">${c} · ${pct}%</div>
+  </div>`;
+}).join('');
+
+// -------- AUTHOR GRID (repeat readers) --------
+const authCounts = {};
+BOOKS.forEach(b => { authCounts[b.author] = (authCounts[b.author]||0) + 1; });
+const repeats = Object.entries(authCounts).filter(([_,c]) => c > 1).sort((a,b) => b[1]-a[1]);
+document.getElementById('author-grid').innerHTML = repeats.map(([n, c]) =>
+  `<div class="author-card ${c >= 3 ? 'repeat-3' : ''}"><span class="author-name">${n}</span><span class="author-count">${c}</span></div>`
+).join('');
+
+// -------- DONUTS --------
+function makeDonut(elId, legendId, slices, palette) {
+  const total = slices.reduce((s, x) => s + x.val, 0);
+  const r = 80, c = 100, sw = 28;
+  let offset = 0;
+  const segs = slices.map((s, i) => {
+    const pct = s.val / total;
+    const dash = 2 * Math.PI * r * pct;
+    const gap = 2 * Math.PI * r - dash;
+    const el = `<circle cx="${c}" cy="${c}" r="${r}" fill="none" stroke="${palette[i]}" stroke-width="${sw}" stroke-dasharray="${dash} ${gap}" stroke-dashoffset="${-offset}" transform="rotate(-90 ${c} ${c})"></circle>`;
+    offset += dash;
+    return el;
+  }).join('');
+  const big = slices[0].val;
+  const pctBig = Math.round((big/total)*100);
+  document.getElementById(elId).innerHTML =
+    `<svg width="200" height="200" viewBox="0 0 200 200">${segs}</svg>
+     <div class="donut-center"><div class="big">${pctBig}%</div><div class="small">${slices[0].label}</div></div>`;
+  document.getElementById(legendId).innerHTML = slices.map((s, i) =>
+    `<div class="donut-legend-row"><span class="legend-sw" style="background:${palette[i]}"></span>${s.label} — ${s.val}</div>`
+  ).join('');
+}
+
+// Gender donut
+const gM = BOOKS.filter(b => b.gender === 'M').length;
+const gF = BOOKS.filter(b => b.gender === 'F').length;
+makeDonut('donut-gender', 'legend-gender',
+  [{label:'Women', val:gF}, {label:'Men', val:gM}],
+  ['#0e1b34', '#8a6a3a']);
+
+// Fic donut
+const fF = BOOKS.filter(b => b.fic === 'Fiction').length;
+const fN = BOOKS.filter(b => b.fic === 'Nonfiction').length;
+makeDonut('donut-fic', 'legend-fic',
+  [{label:'Fiction', val:fF}, {label:'Nonfiction', val:fN}],
+  ['#0e1b34', '#8a6a3a']);
+
+// Language donut: English vs Translated
+const lEn = BOOKS.filter(b => b.lang === 'English').length;
+const lTr = BOOKS.length - lEn;
+makeDonut('donut-lang', 'legend-lang',
+  [{label:'English', val:lEn}, {label:'Translated', val:lTr}],
+  ['#0e1b34', '#8a6a3a']);
+
+// -------- BROWSE PANEL --------
+let filterState = {search:'', gender:'', fic:'', lang:'', nat:'', year:null};
+let sortState = {by:'year', dir:'desc'};
+let page = 1;
+const PAGE_SIZE = 50;
+
+function buildBrowseTimeline() {
+  buildTimeline('timeline2', (y) => {
+    if (filterState.year === y) filterState.year = null;
+    else filterState.year = y;
+    page = 1;
+    renderTable();
+    document.querySelectorAll('#timeline2 .tl-year').forEach(el => {
+      el.classList.toggle('selected', filterState.year && Number(el.dataset.year) === filterState.year);
+    });
+  });
+}
+buildBrowseTimeline();
+
+// Populate lang/nat selects
+const langs = [...new Set(BOOKS.map(b => b.lang))].sort();
+document.getElementById('f-lang').innerHTML += langs.map(l => `<option value="${l}">${l}</option>`).join('');
+const nats = [...new Set(BOOKS.map(b => b.primary))].sort();
+document.getElementById('f-nat').innerHTML += nats.map(n => `<option value="${n}">${n}</option>`).join('');
+
+document.getElementById('f-search').addEventListener('input', e => { filterState.search = e.target.value.toLowerCase(); page = 1; renderTable(); });
+document.getElementById('f-gender').addEventListener('change', e => { filterState.gender = e.target.value; page = 1; renderTable(); });
+document.getElementById('f-fic').addEventListener('change', e => { filterState.fic = e.target.value; page = 1; renderTable(); });
+document.getElementById('f-lang').addEventListener('change', e => { filterState.lang = e.target.value; page = 1; renderTable(); });
+document.getElementById('f-nat').addEventListener('change', e => { filterState.nat = e.target.value; page = 1; renderTable(); });
+document.getElementById('clear').addEventListener('click', () => {
+  filterState = {search:'', gender:'', fic:'', lang:'', nat:'', year:null};
+  document.getElementById('f-search').value = '';
+  document.getElementById('f-gender').value = '';
+  document.getElementById('f-fic').value = '';
+  document.getElementById('f-lang').value = '';
+  document.getElementById('f-nat').value = '';
+  document.querySelectorAll('#timeline2 .tl-year').forEach(el => el.classList.remove('selected'));
+  page = 1;
+  renderTable();
+});
+
+document.querySelectorAll('#books-table th').forEach(th => {
+  th.addEventListener('click', () => {
+    const by = th.dataset.sort;
+    if (sortState.by === by) sortState.dir = sortState.dir === 'asc' ? 'desc' : 'asc';
+    else { sortState.by = by; sortState.dir = by === 'year' || by === 'pages' ? 'desc' : 'asc'; }
+    document.querySelectorAll('#books-table th').forEach(x => x.classList.remove('sort-active'));
+    th.classList.add('sort-active');
+    th.querySelector('.sort-ind').textContent = sortState.dir === 'asc' ? '▲' : '▼';
+    renderTable();
+  });
+});
+
+function renderTable() {
+  let rows = BOOKS.slice();
+  // filter
+  if (filterState.year) rows = rows.filter(b => b.year === filterState.year);
+  if (filterState.search) {
+    const q = filterState.search;
+    rows = rows.filter(b => b.title.toLowerCase().includes(q) || b.author.toLowerCase().includes(q));
+  }
+  if (filterState.gender) rows = rows.filter(b => b.gender === filterState.gender);
+  if (filterState.fic) rows = rows.filter(b => b.fic === filterState.fic);
+  if (filterState.lang) rows = rows.filter(b => b.lang === filterState.lang);
+  if (filterState.nat) rows = rows.filter(b => b.primary === filterState.nat);
+
+  // sort
+  rows.sort((a, b) => {
+    let av = a[sortState.by], bv = b[sortState.by];
+    if (typeof av === 'string') { av = av.toLowerCase(); bv = bv.toLowerCase(); }
+    if (av < bv) return sortState.dir === 'asc' ? -1 : 1;
+    if (av > bv) return sortState.dir === 'asc' ? 1 : -1;
+    return 0;
+  });
+
+  document.getElementById('result-count').textContent =
+    `${rows.length} ${rows.length === 1 ? 'book' : 'books'}`;
+
+  // paginate
+  const totalPages = Math.max(1, Math.ceil(rows.length / PAGE_SIZE));
+  if (page > totalPages) page = totalPages;
+  const start = (page - 1) * PAGE_SIZE;
+  const slice = rows.slice(start, start + PAGE_SIZE);
+
+  document.getElementById('books-body').innerHTML = slice.map(b => `
+    <tr>
+      <td class="year">${b.year}</td>
+      <td class="title">${escapeHTML(b.title)}</td>
+      <td class="author">${escapeHTML(b.author)}</td>
+      <td class="nat">${escapeHTML(b.nationality)}</td>
+      <td class="pages">${b.pages}</td>
+      <td><span class="pill ${b.fic === 'Fiction' ? 'fic' : 'nf'}">${b.fic === 'Fiction' ? 'F' : 'NF'}</span></td>
+    </tr>
+  `).join('');
+
+  // pager
+  const pg = document.getElementById('pager');
+  if (totalPages <= 1) { pg.innerHTML = ''; return; }
+  pg.innerHTML = `
+    <button id="prev" ${page === 1 ? 'disabled' : ''}>← Prev</button>
+    <span class="pi">Page ${page} of ${totalPages}</span>
+    <button id="next" ${page === totalPages ? 'disabled' : ''}>Next →</button>
+  `;
+  document.getElementById('prev').addEventListener('click', () => { page--; renderTable(); });
+  document.getElementById('next').addEventListener('click', () => { page++; renderTable(); });
+}
+
+function escapeHTML(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+renderTable();
+</script>
+</body>
+</html>
