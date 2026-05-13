@@ -35,10 +35,29 @@
 
   /* MASTHEAD */
   .masthead {
-    padding: 72px 32px 28px;
+    padding: 24px 32px 18px;
     text-align: center;
     background: var(--bg);
+    position: relative;
   }
+
+  .site-link {
+    position: absolute;
+    top: 20px;
+    left: 28px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 1px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .site-link:hover { color: var(--ink); border-bottom-color: var(--ink); }
+  .site-link .arrow { margin-right: 6px; display: inline-block; }
 
   .navline {
     font-family: 'Source Sans 3', sans-serif;
@@ -47,17 +66,17 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--ink-mute);
-    margin-bottom: 32px;
+    margin-bottom: 14px;
   }
 
   h1.title {
     font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(2rem, 5vw, 3rem);
+    font-size: clamp(1.9rem, 4.5vw, 2.6rem);
     font-weight: 400;
     letter-spacing: -0.005em;
     line-height: 1.1;
     color: var(--ink);
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
 
   .dateline {
@@ -65,25 +84,18 @@
     font-style: italic;
     font-size: 1.05rem;
     color: var(--ink-mute);
-    margin-bottom: 28px;
+    margin-bottom: 14px;
     font-weight: 400;
-  }
-
-  .title-rule {
-    width: 100%;
-    max-width: 1100px;
-    margin: 0 auto 40px;
-    border-top: 1px solid var(--rule);
   }
 
   .lede {
     max-width: 640px;
-    margin: 0 auto 36px;
+    margin: 0 auto 14px;
     font-family: 'Playfair Display', serif;
     font-style: italic;
     color: var(--ink-soft);
-    font-size: 1.1rem;
-    line-height: 1.65;
+    font-size: 1.05rem;
+    line-height: 1.5;
     font-weight: 400;
   }
 
@@ -94,28 +106,28 @@
     flex-wrap: wrap;
     max-width: 980px;
     margin: 0 auto;
-    padding: 24px 0 8px;
+    padding: 12px 0 0;
   }
 
   .stat {
-    padding: 4px 32px;
+    padding: 4px 28px;
     text-align: center;
-    min-width: 130px;
+    min-width: 120px;
     position: relative;
   }
   .stat + .stat::before {
     content: "";
     position: absolute;
     left: 0;
-    top: 18%;
-    bottom: 18%;
+    top: 22%;
+    bottom: 22%;
     width: 1px;
     background: var(--rule);
   }
 
   .stat-num {
     font-family: 'Playfair Display', serif;
-    font-size: 1.9rem;
+    font-size: 1.7rem;
     color: var(--ink);
     line-height: 1;
     margin-bottom: 8px;
@@ -136,7 +148,7 @@
     top: 0;
     z-index: 50;
     background: var(--ink);
-    margin-top: 40px;
+    margin-top: 18px;
   }
 
   .tab-bar-inner {
@@ -573,7 +585,7 @@
   /* RESPONSIVE */
   @media (max-width: 768px) {
     main { padding: 36px 18px 60px; }
-    .masthead { padding: 48px 18px 22px; }
+    .masthead { padding: 48px 18px 14px; }
     .filter-bar { grid-template-columns: 1fr 1fr; }
     .bar-row { grid-template-columns: 100px 1fr 56px; font-size: 0.85rem; gap: 12px; }
     table.books th, table.books td { padding: 10px 8px; font-size: 0.85rem; }
@@ -590,8 +602,9 @@
 <body>
 
 <header class="masthead">
+  <a href="https://www.brackenburybookclub.co.uk" class="site-link"><span class="arrow">←</span>Main site</a>
   <div class="navline">Reading List · 2005–2026</div>
-  <h1 class="title">Brackenbury Bookclub: By Numbers</h1>
+  <h1 class="title">Brackenbury Bookclub: Library Stats</h1>
   <p class="lede">
     Twenty-two years, two hundred and fourteen books, seventy thousand pages.
   </p>
@@ -722,8 +735,7 @@
 </main>
 
 <footer>
-  A bookclub in Hammersmith, west London · founded 2005<br>
-  <span class="memorial">In memory of Zeb, founder, who is irreplaceable.</span>
+  A bookclub in Hammersmith, west London · founded 2005
 </footer>
 
 <script>
