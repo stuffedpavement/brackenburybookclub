@@ -16,7 +16,7 @@
     --rule: #d9dde6;             /* light blue-grey rule */
     --rule-soft: #ecedf1;
     --accent: #0e1b34;           /* deep navy — primary accent, matches site */
-    --accent-warm: #8a6a3a;      /* understated muted gold for a hint of warmth */
+    --accent-warm: #9bb3d4;      /* dusty powder blue accent */
     --hover: #f6f7f9;
   }
 
@@ -149,6 +149,7 @@
     z-index: 50;
     background: var(--ink);
     margin-top: 18px;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.05);
   }
 
   .tab-bar-inner {
@@ -157,44 +158,50 @@
     display: flex;
     justify-content: center;
     padding: 0 32px;
+    gap: 4px;
   }
 
   .tab {
-    background: none;
+    background: transparent;
     border: none;
-    color: rgba(255,255,255,0.55);
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    padding: 22px 36px;
+    color: rgba(255,255,255,0.6);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    padding: 22px 40px 20px;
     cursor: pointer;
     position: relative;
     transition: color 0.2s, background 0.2s;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
   }
-  .tab:hover { color: #ffffff; background: rgba(255,255,255,0.06); }
+  .tab:hover {
+    color: #ffffff;
+    background: rgba(255,255,255,0.05);
+  }
   .tab.active {
     color: #ffffff;
-    background: rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.10);
   }
   .tab.active::after {
     content: "";
     position: absolute;
     bottom: 0; left: 0; right: 0;
-    height: 3px;
+    height: 4px;
     background: var(--accent-warm);
   }
   .tab-dot {
-    width: 6px; height: 6px;
+    width: 7px; height: 7px;
     border-radius: 50%;
     background: currentColor;
-    opacity: 0.5;
+    opacity: 0.4;
+    transition: opacity 0.2s, background 0.2s;
   }
   .tab.active .tab-dot { background: var(--accent-warm); opacity: 1; }
+  .tab:hover .tab-dot { opacity: 0.8; }
 
   /* MAIN */
   main {
@@ -589,7 +596,7 @@
     .filter-bar { grid-template-columns: 1fr 1fr; }
     .bar-row { grid-template-columns: 100px 1fr 56px; font-size: 0.85rem; gap: 12px; }
     table.books th, table.books td { padding: 10px 8px; font-size: 0.85rem; }
-    .tab { padding: 14px 16px; font-size: 11px; letter-spacing: 0.16em; }
+    .tab { padding: 16px 20px 14px; font-size: 15px; }
     .stats-strip { padding: 14px 0; }
     .stat { padding: 4px 16px; min-width: 100px; }
     .stat-num { font-size: 1.4rem; }
@@ -826,21 +833,21 @@ const gM = BOOKS.filter(b => b.gender === 'M').length;
 const gF = BOOKS.filter(b => b.gender === 'F').length;
 makeDonut('donut-gender', 'legend-gender',
   [{label:'Women', val:gF}, {label:'Men', val:gM}],
-  ['#0e1b34', '#8a6a3a']);
+  ['#0e1b34', '#9bb3d4']);
 
 // Fic donut
 const fF = BOOKS.filter(b => b.fic === 'Fiction').length;
 const fN = BOOKS.filter(b => b.fic === 'Nonfiction').length;
 makeDonut('donut-fic', 'legend-fic',
   [{label:'Fiction', val:fF}, {label:'Nonfiction', val:fN}],
-  ['#0e1b34', '#8a6a3a']);
+  ['#0e1b34', '#9bb3d4']);
 
 // Language donut: English vs Translated
 const lEn = BOOKS.filter(b => b.lang === 'English').length;
 const lTr = BOOKS.length - lEn;
 makeDonut('donut-lang', 'legend-lang',
   [{label:'English', val:lEn}, {label:'Translated', val:lTr}],
-  ['#0e1b34', '#8a6a3a']);
+  ['#0e1b34', '#9bb3d4']);
 
 // -------- BROWSE PANEL --------
 let filterState = {search:'', gender:'', fic:'', lang:'', nat:'', year:null};
